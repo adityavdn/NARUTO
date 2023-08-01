@@ -91,4 +91,3 @@ facet <- ggplot(data=trainset, aes(Sepal.Length, y=Sepal.Width, color=Species))+
   facet_grid(. ~ Species) # Along rows
 print(facet)
 
- 'p;;;o'/

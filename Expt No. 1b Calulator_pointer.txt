@@ -1,0 +1,77 @@
+//Expt No. 1b
+/*To implement calculator using pointer to functions*/
+#include <stdio.h> //Defines core input and output functions
+void display(float s);
+float add(int x,int y) ;
+float subtract(int x, int y) ;
+float multiply(int x, int y);
+float divide(int x, int y);
+
+int main() {
+int a,b;
+
+float ans;
+
+unsigned char c;
+
+float (*ptr_op)(int,int);  //Pointer to function declaration
+
+void (*ptr_disp)(float);
+
+ptr_disp=display;  //Pointer initialization
+
+printf("Enter the two numbers separating with single space:");
+
+scanf("%d %d",&a,&b);
+
+printf("Enter the arithmetic operation(+, -, * or /):");
+
+scanf(" %c",&c);
+
+switch(c) {
+
+case '+': ptr_op=add;  //add function assigned to pointer
+break;
+
+case '-': ptr_op=subtract;  //subt function assigned to pointer
+break;
+
+case '*': ptr_op=multiply;  //mult function assigned to pointer
+break;
+
+case '/': ptr_op=divide;  //divide function assigned to pointer
+break;
+}
+
+ans=(*ptr_op)(a,b);  // Function call using function pointer to perform
+
+//add, subtract, multiply or divide operation
+
+(*ptr_disp)(ans);  //Function call to display the result
+
+return 0;
+}
+//Function definitions
+void display(float s) //Function definitionn to print the result
+{
+    printf("\nAns is: %4.2f\n",s);
+}
+float add(int x,int y)
+{
+    return x+y;
+}
+float subtract(int x,int y)
+{
+    return x-y;
+}
+float multiply(int x,int y)
+{
+    return x*y;
+}
+float divide(int x,int y)
+{
+    if(y!=0)
+    return x/y;
+    else
+    return 0.0;
+}

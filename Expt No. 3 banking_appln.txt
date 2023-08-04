@@ -1,0 +1,87 @@
+Expt No. 3
+//BankApplication
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct
+{int acc_no;
+char acc_type;
+char name[20];
+float balance;
+}account;
+account customer[10]; //Initialization of array of structures
+account customer[]={
+{100,'S',"Amy",1000.90},
+{101,'R',"Gail",3000.50},
+{102,'C',"Marc",5000},
+{103,'S',"Garry",4000.80},
+{104,'S',"Cathy",6000.3},
+};
+//For one customer, one array element which is a structure
+float amt;
+int arrayIndex;
+int main()
+{
+int acctNum,choice;
+int i, flag=0;
+printf("\n ---------------------------- ");
+printf("\n Welcome to the KLS-GIT Bank");
+printf("\n ---------------------------- ");
+printf("\n\n Please enter your 3 digit account number : ");
+scanf("%d",&acctNum);  //Checking whether the account number is valid
+for(i=0;i<5;i++)
+{ if (customer[i].acc_no ==acctNum)
+{flag=1;
+break; }
+else
+{continue;
+} }
+if(flag == 0)
+{ printf("\n Sorry!!!! Invalid account number \n");
+exit(0);
+}
+arrayIndex=acctNum%100;
+printf("\nAccount Number: %d\tAccounttype:%c\t\tName:%s",customer[arrayIndex].acc_no,customer[arrayIndex].acc_type,customer[arrayIndex].name);
+do{
+printf("\n\nPlease enter your choice: ");
+printf("\n1:Balance Enquiry \n2:Deposit \n3:Withdraw \n4:exit \n: ");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1: balance();
+break;
+case 2: deposit();
+break;
+case 3: withdraw();
+break;
+default: exit(0);
+};
+}while(1);
+return 0;
+}
+void balance()
+{
+//printf("\nbalance()....\n");
+printf("\n\nYour Account balance is %0.2f ",customer[arrayIndex].balance);
+}
+void deposit()
+{
+printf("\ndeposit()....\n");
+printf("Please enter the amount to be deposited:");
+scanf("%f",&amt);
+customer[arrayIndex].balance+=amt;
+printf("\nRs.%0.2f is deposited in your account",amt);
+printf("\n\nThe current balance is%0.2f",customer[arrayIndex].balance);
+}
+void withdraw()
+{
+printf("\nwithdrawl()....\n");
+printf("\nEnter the amount to be withdrawn:");
+scanf("%f",&amt);
+if(amt>customer[arrayIndex].balance)
+printf("\nNo sufficient balance\n");
+else
+{
+customer[arrayIndex].balance-=amt;
+printf("\nPlease collect your amount.\n\n The current balance is %0.2f\n",customer[arrayIndex].balance);
+}
+}

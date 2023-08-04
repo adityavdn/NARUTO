@@ -1,0 +1,43 @@
+Expt No. 6
+/* Function overloading to calculate the area of a circle, rectangle and
+a triangle */
+#include<iostream> //Header is used to access the input/output built in functions
+using namespace std; //The built in C++ library routines are kept in the standard namespace
+const float pi=3.14; //Pi constant declaration
+class allarea {
+private: float ar1,ar2,ar3;
+public:
+float area(float n,float b,float h) //Overloaded Function to
+// calculate area of triangle
+{ar1=n*b*h;
+}
+float area(float r) //Overloaded Function to calculate
+//area of circle
+{ar2=pi*r*r;
+}
+float area(float lr,float br) //Overloaded Function to calculate
+// area of rectangle
+{ar3=lr*br;
+}
+void display() //Function to display the area of triangle, circle and rectangle
+{
+cout<<"\nArea of Triangle: "<<ar1<<endl;
+cout<<"\nArea of Circle: "<<ar2<<endl;
+cout<<"\nArea of Rectangle: "<<ar3<<endl;
+}}; // End of class allarea
+int main()
+{
+float b,h,r,lr,br; //Variable declaration
+allarea a;  //Object is instantiated
+cout<<"\nEnter the Base & Height of Triangle: \n";
+cin>>b>>h;
+a.area(0.5,b,h); //Overloaded Function call ‘area’
+cout<<"\nEnter the Radius of Circle: \n";
+cin>>r;
+a.area(r); //Overloaded Function call ‘area’
+cout<<"\nEnter the Length & Breadth of Rectangle: \n";
+cin>>lr>>br;
+a.area(lr,br); //Overloaded Function call ‘area’
+a.display(); //Function call to display the result
+return 0;
+}
